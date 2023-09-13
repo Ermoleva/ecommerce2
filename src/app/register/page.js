@@ -2,11 +2,15 @@
 
 import InputComponent from "@/components/FormElements/InputComponent";
 import SelectComponent from "@/components/FormElements/SelectComponent";
+import ComponentLevelLoader from "@/components/Loader/componentlevel";
+// import Notification from "@/components/Notification";
+import { GlobalContext } from "@/context";
 import { registerNewUser } from "@/services/register";
 import { registrationFormControls } from "@/utils";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-const isRegistered = false;
 const initialFormData = {
   name: "",
   email: "",
@@ -16,6 +20,11 @@ const initialFormData = {
 
 export default function Register() {
   const [formData, setFormData] = useState(initialFormData);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const { pageLevelLoader, setPageLevelLoader , isAuthUser } = useContext(GlobalContext);
+
+  const router = useRouter()
+
   console.log(formData);
 
   function isFormValid() {
@@ -30,14 +39,34 @@ export default function Register() {
       : false;
   }
 
-
   console.log(isFormValid());
-  
+
   async function handleRegisterOnSubmit() {
-    console.log(formData);  // This will log the form data to the console.
+    setPageLevelLoader(true);
     const data = await registerNewUser(formData);
-    console.log(data);  
+
+    if (data.success) {
+      toast.success(data.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setIsRegistered(true);
+      setPageLevelLoader(false);
+      setFormData(initialFormData);
+    } else {
+      toast.error(data.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setPageLevelLoader(false);
+      setFormData(initialFormData);
+    }
+
+    console.log(data);
   }
+
+  useEffect(() => {
+    if (isAuthUser) router.push("/");
+  }, [isAuthUser]);
+
   return (
     <div className="bg-white relative">
       <div className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-8 mr-auto xl:px-5 lg:flex-row">
@@ -46,15 +75,20 @@ export default function Register() {
             <div className="flex flex-col items-center justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10">
               <p className="w-full text-4xl font-medium text-center font-serif">
                 {isRegistered
-                  ? "Registration Successfull!"
+                  ? "Registration Successfull !"
                   : "Sign up for an account"}
               </p>
               {isRegistered ? (
-                <button className=" inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide">
+                <button
+                  className="inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg 
+                text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide
+                "
+                onClick={()=>router.push('/login')}
+                >
                   Login
                 </button>
               ) : (
-                <div className=" w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
+                <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
                   {registrationFormControls.map((controlItem) =>
                     controlItem.componentType === "input" ? (
                       <InputComponent
@@ -73,15 +107,32 @@ export default function Register() {
                       <SelectComponent
                         options={controlItem.options}
                         label={controlItem.label}
+                        onChange={(event) => {
+                          setFormData({
+                            ...formData,
+                            [controlItem.id]: event.target.value,
+                          });
+                        }}
+                        value={formData[controlItem.id]}
                       />
                     ) : null
                   )}
                   <button
-                    className=" disabled:opacity-50 inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
+                    className=" disabled:opacity-50 inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg 
+                   text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide
+                   "
                     disabled={!isFormValid()}
                     onClick={handleRegisterOnSubmit}
                   >
-                    Register
+                    {pageLevelLoader ? (
+                      <ComponentLevelLoader
+                        text={"Registering"}
+                        color={"#ffffff"}
+                        loading={pageLevelLoader}
+                      />
+                    ) : (
+                      "Register"
+                    )}
                   </button>
                 </div>
               )}
@@ -89,6 +140,7 @@ export default function Register() {
           </div>
         </div>
       </div>
+      {/* <Notification /> */}
     </div>
   );
 }

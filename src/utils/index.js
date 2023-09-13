@@ -100,109 +100,109 @@ export const navOptions = [
     },
   ];
   
-  // export const adminAddProductformControls = [
-  //   {
-  //     id: "name",
-  //     type: "text",
-  //     placeholder: "Enter name",
-  //     label: "Name",
-  //     componentType: "input",
-  //   },
-  //   {
-  //     id: "price",
-  //     type: "number",
-  //     placeholder: "Enter price",
-  //     label: "Price",
-  //     componentType: "input",
-  //   },
-  //   {
-  //     id: "description",
-  //     type: "text",
-  //     placeholder: "Enter description",
-  //     label: "Description",
-  //     componentType: "input",
-  //   },
-  //   {
-  //     id: "category",
-  //     type: "",
-  //     placeholder: "",
-  //     label: "Category",
-  //     componentType: "select",
-  //     options: [
-  //       {
-  //         id: "men",
-  //         label: "Men",
-  //       },
-  //       {
-  //         id: "women",
-  //         label: "Women",
-  //       },
-  //       {
-  //         id: "kids",
-  //         label: "Kids",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: "deliveryInfo",
-  //     type: "text",
-  //     placeholder: "Enter deliveryInfo",
-  //     label: "Delivery Info",
-  //     componentType: "input",
-  //   },
-  //   {
-  //     id: "onSale",
-  //     type: "",
-  //     placeholder: "",
-  //     label: "On Sale",
-  //     componentType: "select",
-  //     options: [
-  //       {
-  //         id: "yes",
-  //         label: "Yes",
-  //       },
-  //       {
-  //         id: "no",
-  //         label: "No",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: "priceDrop",
-  //     type: "number",
-  //     placeholder: "Enter Price Drop",
-  //     label: "Price Drop",
-  //     componentType: "input",
-  //   },
-  // ];
+  export const adminAddProductformControls = [
+    {
+      id: "name",
+      type: "text",
+      placeholder: "Enter name",
+      label: "Name",
+      componentType: "input",
+    },
+    {
+      id: "price",
+      type: "number",
+      placeholder: "Enter price",
+      label: "Price",
+      componentType: "input",
+    },
+    {
+      id: "description",
+      type: "text",
+      placeholder: "Enter description",
+      label: "Description",
+      componentType: "input",
+    },
+    {
+      id: "category",
+      type: "",
+      placeholder: "",
+      label: "Category",
+      componentType: "select",
+      options: [
+        {
+          id: "men",
+          label: "Men",
+        },
+        {
+          id: "women",
+          label: "Women",
+        },
+        {
+          id: "kids",
+          label: "Kids",
+        },
+      ],
+    },
+    {
+      id: "deliveryInfo",
+      type: "text",
+      placeholder: "Enter deliveryInfo",
+      label: "Delivery Info",
+      componentType: "input",
+    },
+    {
+      id: "onSale",
+      type: "",
+      placeholder: "",
+      label: "On Sale",
+      componentType: "select",
+      options: [
+        {
+          id: "yes",
+          label: "Yes",
+        },
+        {
+          id: "no",
+          label: "No",
+        },
+      ],
+    },
+    {
+      id: "priceDrop",
+      type: "number",
+      placeholder: "Enter Price Drop",
+      label: "Price Drop",
+      componentType: "input",
+    },
+  ];
   
-  // export const AvailableSizes = [
-  //   {
-  //     id: "s",
-  //     label: "S",
-  //   },
-  //   {
-  //     id: "m",
-  //     label: "M",
-  //   },
-  //   {
-  //     id: "l",
-  //     label: "L",
-  //   },
-  // ];
+  export const AvailableSizes = [
+    {
+      id: "s",
+      label: "S",
+    },
+    {
+      id: "m",
+      label: "M",
+    },
+    {
+      id: "l",
+      label: "L",
+    },
+  ];
   
-  // export const firebaseConfig = {
-  //   apiKey: "API_KEY",
-  //   authDomain: "AUTH_DOMAIN",
-  //   projectId: "PROJECT_ID",
-  //   storageBucket: "STROAGE_BUCKET",
-  //   messagingSenderId: "MESSAGING_SENDER_ID",
-  //   appId: "APP_ID",
-  //   measurementId: "MEASUREMENT_ID",
-  // };
+  export const firebaseConfig = {
+    apiKey: "AIzaSyASg2TxYoRocpDhmYRDzNNTyyrgENCOOaw",
+    authDomain: "next-js-ecommerce-2023-ed234.firebaseapp.com",
+    projectId: "next-js-ecommerce-2023-ed234",
+    storageBucket: "next-js-ecommerce-2023-ed234.appspot.com",
+    messagingSenderId: "907710653207",
+    appId: "1:907710653207:web:b2e21dfc81ce80e9dccd52",
+    measurementId: "G-18316R6F2B"
+  };
   
-  // export const firebaseStroageURL =
-  //   "YOUR_FIREBASE_STROAGE_URL";
+  export const firebaseStroageURL =
+    "gs://next-js-ecommerce-2023-ed234.appspot.com";
   
   // export const addNewAddressFormControls = [
   //   {
