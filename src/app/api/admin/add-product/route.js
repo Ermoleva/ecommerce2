@@ -37,7 +37,7 @@ export async function POST(req) {
         deliveryInfo,
         onSale,
         priceDrop,
-      } = data;
+      } = extractData;
       const { error } = AddNewProductsSchema.validate({
         name,
         description,
